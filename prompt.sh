@@ -15,8 +15,12 @@ find_git_dirty() {
   local status=$(git status --porcelain 2> /dev/null)
   if [[ "$status" != "" ]]; then
     git_dirty='*'
+    git_dirty_branch="$git_branch"
+    git_clean_branch=''
   else
     git_dirty=''
+    git_dirty_branch=''
+    git_clean_branch="$git_branch"
   fi
 }
 
